@@ -8,6 +8,8 @@ int xRange3 = 10;//for diagonals
 int yRange3 = 30;
 int minusAmt = 10;
 
+String dir;
+
 LightningBolt bob1;
 LightningBolt bob2;
 LightningBolt bob3;
@@ -23,6 +25,8 @@ LightningBolt bob10;
 LightningBolt bob11;
 LightningBolt bob12;
 
+LightningBolt[] bolts = new LightningBolt[8];
+
 /* chart for diagonals
  1#2
  ###
@@ -30,75 +34,105 @@ LightningBolt bob12;
  */
 
 void setup() {
-  size(300, 300);
-  background(255, 255, 255);
+  size(500, 500);
+  fill(0,0,0);
+  background(0, 0, 0);
+  noCursor();
+  for (int i=0; i<bolts.length; i++) {
+    bolts[i] = new LightningBolt();
+  }
 }
 
 void draw() {
 }
 
-//void mouseMoved() {
-//  background(255, 255, 255);
-//  // startX = mouseX;
-//  // startY = 0;
-//  // endX = startX;
-//  // endY = 0;
-//  bob1 = new LightningBolt(mouseX, mouseY, "left");
-//  bob1.show();
-//  bob2 = new LightningBolt(mouseX, mouseY, "right");
-//  bob2.show();
+void mouseMoved() {
+ background(0, 0, 0);
 
-//  bob3 = new LightningBolt(mouseX, mouseY, "up");
-//  bob3.show();
-//  bob4 = new LightningBolt(mouseX, mouseY, "down");
-//  bob4.show();
+ // startX = mouseX;
+ // startY = 0;
+ // endX = startX;
+ // endY = 0;
+ stroke(200+(int)(Math.random()*55),255-(int)(Math.random()*55),0);
+ // bob1 = new LightningBolt(mouseX, mouseY, "left");
+ // bob1.show();
+ // bob2 = new LightningBolt(mouseX, mouseY, "right");
+ // bob2.show();
 
-//  bob5 = new LightningBolt(mouseX, mouseY, "diagonal1");
-//  bob5.show();
-//  bob6 = new LightningBolt(mouseX, mouseY, "diagonal2");
-//  bob6.show();
+ // bob3 = new LightningBolt(mouseX, mouseY, "up");
+ // bob3.show();
+ // bob4 = new LightningBolt(mouseX, mouseY, "down");
+ // bob4.show();
 
-//  bob7 = new LightningBolt(mouseX, mouseY, "diagonal3");
-//  bob7.show();
-//  bob8 = new LightningBolt(mouseX, mouseY, "diagonal4");
-//  bob8.show();
+ // bob5 = new LightningBolt(mouseX, mouseY, "diagonal1");
+ // bob5.show();
+ // bob6 = new LightningBolt(mouseX, mouseY, "diagonal2");
+ // bob6.show();
 
-////  bob9 = new LightningBolt(mouseX, mouseY, "diagonal1");
-////  bob9.show();
-////  bob10 = new LightningBolt(mouseX, mouseY, "diagonal2");
-////  bob10.show();
+ // bob7 = new LightningBolt(mouseX, mouseY, "diagonal3");
+ // bob7.show();
+ // bob8 = new LightningBolt(mouseX, mouseY, "diagonal4");
+ // bob8.show();
 
-////  bob11 = new LightningBolt(mouseX, mouseY, "diagonal3");
-////  bob11.show();
-////  bob12 = new LightningBolt(mouseX, mouseY, "diagonal4");
-////  bob12.show();
-//}
+ for (int i=0; i<bolts.length; i++) {
+    
+    if (i == 0) {
+      dir = "up";
+    } else if (i == 1) {
+      dir = "down";
+    } else if (i == 2) {
+      dir = "left";
+    } else if (i == 3) {
+      dir = "right";
+    } else if (i == 4) {
+      dir = "diagonal1";
+    } else if (i == 5) {
+      dir = "diagonal2";
+    } else if (i == 6) {
+      dir = "diagonal3";
+    } else if (i == 7) {
+      dir = "diagonal4";
+    }
 
-void mouseClicked() {
-  background(255, 255, 255);
-  // startX = mouseX;
-  // startY = 0;
-  // endX = startX;
-  // endY = 0;
-  bob1 = new LightningBolt(mouseX, mouseY, "left");
-  bob1.show();
-  bob2 = new LightningBolt(mouseX, mouseY, "right");
-  bob2.show();
+    bolts[i] = new LightningBolt(mouseX, mouseY, dir);
+  }
 
-  bob3 = new LightningBolt(mouseX, mouseY, "up");
-  bob3.show();
-  bob4 = new LightningBolt(mouseX, mouseY, "down");
-  bob4.show();
+ // bob9 = new LightningBolt(mouseX, mouseY, "diagonal1");
+ // bob9.show();
+ // bob10 = new LightningBolt(mouseX, mouseY, "diagonal2");
+ // bob10.show();
 
-  bob5 = new LightningBolt(mouseX, mouseY, "diagonal1");
-  bob5.show();
-  bob6 = new LightningBolt(mouseX, mouseY, "diagonal2");
-  bob6.show();
+ // bob11 = new LightningBolt(mouseX, mouseY, "diagonal3");
+ // bob11.show();
+ // bob12 = new LightningBolt(mouseX, mouseY, "diagonal4");
+ // bob12.show();
+}
 
-  bob7 = new LightningBolt(mouseX, mouseY, "diagonal3");
-  bob7.show();
-  bob8 = new LightningBolt(mouseX, mouseY, "diagonal4");
-  bob8.show();
+// void mouseClicked() {
+//   background(255, 255, 255);
+//   // startX = mouseX;
+//   // startY = 0;
+//   // endX = startX;
+//   // endY = 0;
+//   bob1 = new LightningBolt(mouseX, mouseY, "left");
+//   bob1.show();
+//   bob2 = new LightningBolt(mouseX, mouseY, "right");
+//   bob2.show();
+
+//   bob3 = new LightningBolt(mouseX, mouseY, "up");
+//   bob3.show();
+//   bob4 = new LightningBolt(mouseX, mouseY, "down");
+//   bob4.show();
+
+//   bob5 = new LightningBolt(mouseX, mouseY, "diagonal1");
+//   bob5.show();
+//   bob6 = new LightningBolt(mouseX, mouseY, "diagonal2");
+//   bob6.show();
+
+//   bob7 = new LightningBolt(mouseX, mouseY, "diagonal3");
+//   bob7.show();
+//   bob8 = new LightningBolt(mouseX, mouseY, "diagonal4");
+//   bob8.show();
 
 //  bob9 = new LightningBolt(mouseX, mouseY, "diagonal1");
 //  bob9.show();
@@ -109,7 +143,7 @@ void mouseClicked() {
 //  bob11.show();
 //  bob12 = new LightningBolt(mouseX, mouseY, "diagonal4");
 //  bob12.show();
-}
+//}
 
 class LightningBolt {
   int startX;
@@ -117,6 +151,9 @@ class LightningBolt {
   int endX;
   int endY;
   String dir;
+
+  LightningBolt() {
+  }
 
   LightningBolt(int tempStartX, int tempStartY, String tempDir) {
     startX = tempStartX;
