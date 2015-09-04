@@ -9,6 +9,8 @@ int xRange3 = 10;//for diagonals
 int yRange3 = 30;
 int minusAmt = 10;
 
+int strokeAmt = 3;
+
 String dir;
 
 LightningBolt[] bolts = new LightningBolt[8];
@@ -30,6 +32,7 @@ void setup() {
   // for (int i=0; i<bolts.length; i++) {
   //   bolts[i] = new LightningBolt();
   // }
+  stroke(200,255,0);
 }
 
 void draw() {
@@ -43,6 +46,7 @@ void mouseMoved() {
       // stroke(200+(int)(Math.random()*55),255-(int)(Math.random()*55),0);
 
       stroke(200,255,0,100+(int)(Math.random()*150));
+
       bolts[i] = new LightningBolt(mouseX, mouseY, i);
       bolts[i].show();
       counter = 0;
@@ -71,7 +75,7 @@ class LightningBolt {
   void show() {
     if (dir == 5) {
       while (endY < height) {
-        strokeWeight((int)(Math.random()*3));
+        strokeWeight((int)(Math.random()*strokeAmt));
         endX = startX + (int)(Math.random()*xRange) - xRange/2;
         endY = startY + (int)(Math.random()*yRange);
         line(startX, startY, endX, endY);
@@ -80,7 +84,7 @@ class LightningBolt {
       }
     } else if (dir == 1) {
       while (endY > 0) {
-        strokeWeight((int)(Math.random()*3));
+        strokeWeight((int)(Math.random()*strokeAmt));
         endX = startX + (int)(Math.random()*xRange) - xRange/2;
         endY = startY + (int)(Math.random()*-yRange);
         line(startX, startY, endX, endY);
@@ -89,7 +93,7 @@ class LightningBolt {
       }
     } else if (dir == 7) {
       while (endX < width) {
-        strokeWeight((int)(Math.random()*3));
+        strokeWeight((int)(Math.random()*strokeAmt));
         endX = startX + (int)(Math.random()*xRange2);
         endY = startY + (int)(Math.random()*yRange2) - yRange2/2;
         line(startX, startY, endX, endY);
@@ -98,7 +102,7 @@ class LightningBolt {
       }
     } else if (dir == 3) {
       while (endX > 0) {
-        strokeWeight((int)(Math.random()*3));
+        strokeWeight((int)(Math.random()*strokeAmt));
         endX = startX + (int)(Math.random()*-xRange2);
         endY = startY + (int)(Math.random()*yRange2) - yRange2/2;
         line(startX, startY, endX, endY);
@@ -107,7 +111,7 @@ class LightningBolt {
       }
     } else if (dir == 0) {
       while (endX > 0) {
-      strokeWeight((int)(Math.random()*3));
+      strokeWeight((int)(Math.random()*strokeAmt));
         endX = startX + (int)(Math.random()*-xRange3);
         endY = startY + (int)(Math.random()*-yRange3) + minusAmt;
         line(startX, startY, endX, endY);
@@ -116,7 +120,7 @@ class LightningBolt {
       }
     } else if (dir == 2) {
       while (endX < width) {
-        strokeWeight((int)(Math.random()*3));
+        strokeWeight((int)(Math.random()*strokeAmt));
         endX = startX + (int)(Math.random()*xRange3);
         endY = startY + (int)(Math.random()*-yRange3) + minusAmt;
         line(startX, startY, endX, endY);
@@ -125,7 +129,7 @@ class LightningBolt {
       }
     } else if (dir == 6) {
       while (endX < width) {
-        strokeWeight((int)(Math.random()*3));
+        strokeWeight((int)(Math.random()*strokeAmt));
         endX = startX + (int)(Math.random()*xRange3);
         endY = startY + (int)(Math.random()*yRange3) - minusAmt;
         line(startX, startY, endX, endY);
