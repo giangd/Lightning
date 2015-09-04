@@ -9,7 +9,7 @@ int xRange3 = 10;//for diagonals
 int yRange3 = 30;
 int minusAmt = 10;
 
-int strokeAmt = 3;
+int strokeAmt = 4;
 
 String dir;
 
@@ -26,7 +26,6 @@ int counter = 0;//to make sparks at intervals
 
 void setup() {
   size(800, 650);
-  fill(0,0,0);
   background(0, 0, 0);
   noCursor();
   // for (int i=0; i<bolts.length; i++) {
@@ -41,7 +40,7 @@ void draw() {
 void mouseMoved() {
  background(0, 0, 0);
  counter++;
-  if (counter > 1) {
+  if (counter == 2) {
     for (int i=0; i<bolts.length; i++) {
       // stroke(200+(int)(Math.random()*55),255-(int)(Math.random()*55),0);
 
