@@ -17,9 +17,9 @@ int counter = 0;//to make sparks at intervals
 
 
  /* chart for directions
-  1 2 3
-  8   4
-  7 6 5
+  0 1 2
+  7   3
+  6 5 4
  */
 
 void setup() {
@@ -41,6 +41,7 @@ void mouseMoved() {
   if (counter > 1) {
     for (int i=0; i<bolts.length; i++) {
       // stroke(200+(int)(Math.random()*55),255-(int)(Math.random()*55),0);
+
       stroke(200,255,0,100+(int)(Math.random()*150));
       bolts[i] = new LightningBolt(mouseX, mouseY, i);
       bolts[i].show();
@@ -68,64 +69,72 @@ class LightningBolt {
   }
 
   void show() {
-    if (dir == 6) {
+    if (dir == 5) {
       while (endY < height) {
+        strokeWeight((int)(Math.random()*3));
         endX = startX + (int)(Math.random()*xRange) - xRange/2;
         endY = startY + (int)(Math.random()*yRange);
         line(startX, startY, endX, endY);
         startX = endX;
         startY = endY;
       }
-    } else if (dir == 2) {
+    } else if (dir == 1) {
       while (endY > 0) {
+        strokeWeight((int)(Math.random()*3));
         endX = startX + (int)(Math.random()*xRange) - xRange/2;
         endY = startY + (int)(Math.random()*-yRange);
         line(startX, startY, endX, endY);
         startX = endX;
         startY = endY;
       }
-    } else if (dir == 8) {
+    } else if (dir == 7) {
       while (endX < width) {
+        strokeWeight((int)(Math.random()*3));
         endX = startX + (int)(Math.random()*xRange2);
         endY = startY + (int)(Math.random()*yRange2) - yRange2/2;
         line(startX, startY, endX, endY);
         startX = endX;
         startY = endY;
       }
-    } else if (dir == 4) {
+    } else if (dir == 3) {
       while (endX > 0) {
+        strokeWeight((int)(Math.random()*3));
         endX = startX + (int)(Math.random()*-xRange2);
         endY = startY + (int)(Math.random()*yRange2) - yRange2/2;
         line(startX, startY, endX, endY);
         startX = endX;
         startY = endY;
       }
-    } else if (dir == 1) {
-      while (endX > 0) { // i cant put "endX > 0 || endY < 0" probably bc u can only have 1 condition in a while loop
+    } else if (dir == 0) {
+      while (endX > 0) {
+      strokeWeight((int)(Math.random()*3));
         endX = startX + (int)(Math.random()*-xRange3);
         endY = startY + (int)(Math.random()*-yRange3) + minusAmt;
         line(startX, startY, endX, endY);
         startX = endX;
         startY = endY;
       }
-    } else if (dir == 3) {
+    } else if (dir == 2) {
       while (endX < width) {
+        strokeWeight((int)(Math.random()*3));
         endX = startX + (int)(Math.random()*xRange3);
         endY = startY + (int)(Math.random()*-yRange3) + minusAmt;
         line(startX, startY, endX, endY);
         startX = endX;
         startY = endY;
       }
-    } else if (dir == 7) {
+    } else if (dir == 6) {
       while (endX < width) {
+        strokeWeight((int)(Math.random()*3));
         endX = startX + (int)(Math.random()*xRange3);
         endY = startY + (int)(Math.random()*yRange3) - minusAmt;
         line(startX, startY, endX, endY);
         startX = endX;
         startY = endY;
       }
-    } else if (dir == 5) {
+    } else if (dir == 4) {
       while (endX > 0) {
+        strokeWeight((int)(Math.random()*3));
         endX = startX + (int)(Math.random()*-xRange3);
         endY = startY + (int)(Math.random()*yRange3) - minusAmt;
         line(startX, startY, endX, endY);
