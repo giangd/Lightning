@@ -42,8 +42,6 @@ int counter = 0;//to make sparks at intervals
 
 public void setup() {
   size(800, 650);
-  size(displayWidth, displayHeight);
-  fill(0,0,0);
   background(0, 0, 0);
   noCursor();
   // for (int i=0; i<bolts.length; i++) {
@@ -53,6 +51,7 @@ public void setup() {
 }
 
 public void draw() {
+  println(frameRate);
 }
 
 public void mouseMoved() {
@@ -62,7 +61,7 @@ public void mouseMoved() {
     for (int i=0; i<bolts.length; i++) {
       // stroke(200+(int)(Math.random()*55),255-(int)(Math.random()*55),0);
 
-      stroke(200,255,0,100+(int)(Math.random()*150));
+      //stroke(200,255,0,100+(int)(Math.random()*150));
 
       bolts[i] = new LightningBolt(mouseX, mouseY, i);
       bolts[i].show();
